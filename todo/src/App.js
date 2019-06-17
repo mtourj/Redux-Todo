@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
+import { Todos, TodoForm } from "./components";
+
+import { connect } from "react-redux";
+
+import { toggleTodo, addTodo } from "./actions";
+
+import { Route, NavLink } from "react-router-dom";
+
+const App = propsFromState => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* {propsFromState.todos.map(todo => (
+        <Todo toggle={propsFromState.toggleTodo} key={todo.value} value={todo.value} complete={todo.completed} />
+      ))} */}
+      <div className="App-header">
+        <NavLink exact to='/' activeClassName="blue">Todos</NavLink>
+        <NavLink to='/add' activeClassName='blue'>New Todo</NavLink>
+      </div>
+      <Route
+        exact
+        path="/"
+        render={props => (
+          <Todos
+            {...props}
+            todos={propsFromState.todos}
+            toggleTodo={propsFromState.toggleTodo}
+          />
+        )}
+      />
+      <Route path="/add" render={props => <TodoForm {...props} addTodo={propsFromState.addTodo} />} />
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { toggleTodo, addTodo }
+)(App);
