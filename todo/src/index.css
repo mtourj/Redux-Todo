@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h3 {
+  line-break: none;
+}
+
+.todo {
+  box-shadow: 0 0 5px -1px;
+
+  width: 420px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  align-content: center;
+  margin: 1rem;
+
+  user-select: none;
+  cursor: pointer;
+
+  background-color: dodgerblue;
+  color: white;
+
+  transition: box-shadow 0.24s, color 0.24s, background-color 0.24s;
+  
+}
+
+.todo:hover {
+  box-shadow: 0 0 10px 0px gray;
+}
+
+.todo.complete {
+  color: rgb(221, 221, 221);
+  background-color: gray;
+}
+
+.todo-form {
+  margin: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgb(173, 173, 173);
+  box-shadow: 0 0 6px -1px rgb(190, 190, 190);
+  padding: 2rem;
+}
+
+.todo-form .form-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-form .form-field label {
+  padding: 7px;
+}
+
+.todo-form .form-field input {
+  border-radius: 7px;
+  border: 1.3px solid lightgray;
+  padding: 6px;
+  font-size: 19px;
+  color: rgb(26, 26, 26);
+  outline: none;
+
+  transition: border 0.5s;
+}
+
+.todo-form .form-field input:focus {
+  border: 1.3px solid blue;
+}
+
+.todo-form button {
+  width: 100%;
+  margin: 12px 0;
+  border-radius: 8px;
+  border: 0;
+  padding: 8px;
+  background: green;
+  cursor: pointer;
+  color: white;
+  font-weight: bolder;
+
+  transition: background 0.2s, color 0.2s;
+}
+
+.todo-form button:hover {
+  background: greenyellow;
+  color: lightgray;
+}
