@@ -5,16 +5,17 @@ import { Todos, TodoForm } from "./components";
 
 import { connect } from "react-redux";
 
-import { toggleTodo, addTodo } from "./actions";
+import { toggleTodo, addTodo, deleteTodo } from "./actions";
 
 import { Route, NavLink } from "react-router-dom";
 
 const App = propsFromState => {
+  const showContextMenu = e => {
+
+  }
+
   return (
     <div className="App">
-      {/* {propsFromState.todos.map(todo => (
-        <Todo toggle={propsFromState.toggleTodo} key={todo.value} value={todo.value} complete={todo.completed} />
-      ))} */}
       <div className="App-header">
         <NavLink exact to='/' activeClassName="blue">Todos</NavLink>
         <NavLink to='/add' activeClassName='blue'>New Todo</NavLink>
@@ -25,6 +26,7 @@ const App = propsFromState => {
         render={props => (
           <Todos
             {...props}
+            deleteTodo={propsFromState.deleteTodo}
             todos={propsFromState.todos}
             toggleTodo={propsFromState.toggleTodo}
           />
@@ -43,5 +45,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleTodo, addTodo }
+  { toggleTodo, addTodo, deleteTodo }
 )(App);

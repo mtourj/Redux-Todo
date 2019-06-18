@@ -29,6 +29,13 @@ export const reducer = (state = initialState, action) => {
       return {
         todos: newTodos
       }
+    case DELETE_TODO:
+      const todos = Array.from(state.todos);
+      const targetIndex = todos.find(el => el.id === action.payload);
+      todos.splice(targetIndex, 1);
+      return {
+        todos: todos
+      }
     default:
       return state;
   }
